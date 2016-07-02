@@ -43,6 +43,7 @@ Calculator::Calculator(QWidget *parent)
 	Hl1->addWidget(button_ce);
 	Hl2->addWidget(button_1);
 	Hl2->addWidget(button_2);
+	//
 	Hl2->addWidget(button_3);
 	Hl2->addWidget(button_plus);
 	Hl3->addWidget(button_4);
