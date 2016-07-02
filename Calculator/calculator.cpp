@@ -73,11 +73,11 @@ Calculator::Calculator(QWidget *parent)
 	connect(button_7, SIGNAL(clicked()), this, SLOT(button_7_clicked()));
 	connect(button_8, SIGNAL(clicked()), this, SLOT(button_8_clicked()));
 	connect(button_9, SIGNAL(clicked()), this, SLOT(button_9_clicked()));
-	connect(button_plus, SIGNAL(clicked()), this, SLOT(button_jia_clicked()));
-	connect(button_minus, SIGNAL(clicked()), this, SLOT(button_jian_clicked()));
-	connect(button_times, SIGNAL(clicked()), this, SLOT(button_cheng_clicked()));
-	connect(button_divide, SIGNAL(clicked()), this, SLOT(button_chu_clicked()));
-	connect(button_result, SIGNAL(clicked()), this, SLOT(button_dengyu_clicked()));
+	connect(button_plus, SIGNAL(clicked()), this, SLOT(button_plus_clicked()));
+	connect(button_minus, SIGNAL(clicked()), this, SLOT(button_minus_clicked()));
+	connect(button_times, SIGNAL(clicked()), this, SLOT(button_times_clicked()));
+	connect(button_divide, SIGNAL(clicked()), this, SLOT(button_divide_clicked()));
+	connect(button_result, SIGNAL(clicked()), this, SLOT(button_result_clicked()));
 	connect(button_ce, SIGNAL(clicked()), this, SLOT(button_ce_clicked()));
 	connect(button__, SIGNAL(clicked()), this, SLOT(button__clicked()));
 	setLayout(v1);
@@ -282,32 +282,38 @@ void Calculator::button_9_clicked() {
 	}
 }
 void Calculator::button_plus_clicked() {
-	S += "+";
-	lineEditor->setText(S);
+	//S = "+";
+	//lineEditor->setText(S);
+	
+	//lineEditor->setText(S);
 	plus_minus = true;
 	operate = '+';
 	mark = 2;
+	S = "";
 }
 void Calculator::button_minus_clicked() {
-	S += "-";
-	lineEditor->setText(S);
+	//S += "-";
+	//lineEditor->setText(S);
 	plus_minus = true;
 	operate = '-';
 	mark = 2;
+	S = "";
 }
 void Calculator::button_times_clicked() {
-	S += "*";
-	lineEditor->setText(S);
+	//S = "";
+	//lineEditor->setText(S);
 	plus_minus = true;
 	operate = '*';
 	mark = 2;
+	S = "";
 }
 void Calculator::button_divide_clicked() {
-	S += "/";
-	lineEditor->setText(S);
+	//S = "";
+	//lineEditor->setText(S);
 	plus_minus = true;
 	operate = '/';
 	mark = 2;
+	S = "";
 }
 void Calculator::button__clicked() {
 	S += "-";
@@ -315,7 +321,7 @@ void Calculator::button__clicked() {
 	plus_minus = false;
 }
 void Calculator::button_result_clicked() {
-	S += "=";
+	S = "";
 	switch (operate)
 	{
 	case '+':
@@ -346,6 +352,7 @@ void Calculator::button_result_clicked() {
 	for (;i;i--)
 	{
 		S += (result / (int)pow(10, i - 1) + '0');
+		//S += (result / (int)pow(10, i - 1) + '0');
 		//cerr << S.toStdString();
 		result %= (int)pow(10, i - 1);
 	}
@@ -356,7 +363,7 @@ void Calculator::button_result_clicked() {
 	S = "";
 }
 void Calculator::button_ce_clicked() {
-	plus_minus = false;
+	plus_minus = true;
 	S = "";
 	lineEditor->setText("0");
 	num1 = num2 = 0;
