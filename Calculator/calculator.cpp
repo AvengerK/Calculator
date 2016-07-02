@@ -344,18 +344,33 @@ void Calculator::button_result_clicked() {
 		break;
 	}
 	int i = 0;
-	int result1 = result;
+	int result1 = abs(result);
 	while (result1)
 	{
 		i++;
 		result1 /= 10;
 	}
-	for (;i;i--)
+	if (result > 0)
 	{
-		S += (result / (int)pow(10, i - 1) + '0');
-		//S += (result / (int)pow(10, i - 1) + '0');
-		//cerr << S.toStdString();
-		result %= (int)pow(10, i - 1);
+		for (;i;i--)
+		{
+			S += (result / (int)pow(10, i - 1) + '0');
+			result %= (int)pow(10, i - 1);
+		}
+	}
+	else if (result==0)
+	{
+		S = "0";
+	}
+	else
+	{
+		S += "-";
+		int result2 = abs(result);
+		for (;i;i--)
+		{
+			S += (result2 / (int)pow(10, i - 1) + '0');
+			result2 %= (int)pow(10, i - 1);
+		}
 	}
 	lineEditor->setText(S);
 	plus_minus = true;
