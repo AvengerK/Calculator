@@ -4,12 +4,11 @@
 #include <QLineEdit>
 #include <cmath>
 #include <QDebug>
-#include <QScxmlStateMachine>
 //#include <iostream>
 #include "calculator.h"
 //using namespace std;
-Calculator::Calculator(QWidget *parent,QScxmlStateMachine *machine)
-	: QDialog(parent),m_machine(machine)
+Calculator::Calculator(QWidget *parent)
+	: QDialog(parent)
 {
 	num1 = 0;
 	num2 = 0;
@@ -74,8 +73,7 @@ Calculator::Calculator(QWidget *parent,QScxmlStateMachine *machine)
 	connect(button_7, SIGNAL(clicked()), this, SLOT(button_7_clicked()));
 	connect(button_8, SIGNAL(clicked()), this, SLOT(button_8_clicked()));
 	connect(button_9, SIGNAL(clicked()), this, SLOT(button_9_clicked()));
-	//connect(button_plus, SIGNAL(clicked()), this, SLOT(button_jia_clicked()));
-	connect(button_plus, &QAbstractButton::clicked, [this] {m_machine->submitEvent("OPER.PLUS");});
+	connect(button_plus, SIGNAL(clicked()), this, SLOT(button_jia_clicked()));
 	connect(button_minus, SIGNAL(clicked()), this, SLOT(button_jian_clicked()));
 	connect(button_times, SIGNAL(clicked()), this, SLOT(button_cheng_clicked()));
 	connect(button_divide, SIGNAL(clicked()), this, SLOT(button_chu_clicked()));
