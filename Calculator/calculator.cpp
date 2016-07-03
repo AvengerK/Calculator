@@ -29,6 +29,7 @@ Calculator::Calculator(QWidget *parent)
 	button_7 = new QPushButton("7");
 	button_8 = new QPushButton("8");
 	button_9 = new QPushButton("9");
+	button_point = new QPushButton(".");
 	button_ce = new QPushButton("CE");
 	button_plus = new QPushButton("+");
 	button_minus = new QPushButton("-");
@@ -57,6 +58,7 @@ Calculator::Calculator(QWidget *parent)
 	Hl4->addWidget(button_times);
 	Hl5->addWidget(button__);
 	Hl5->addWidget(button_0);
+	Hl5->addWidget(button_point);
 	Hl5->addWidget(button_result);
 	Hl5->addWidget(button_divide);
 	QVBoxLayout* v1 = new QVBoxLayout;
@@ -75,6 +77,7 @@ Calculator::Calculator(QWidget *parent)
 	connect(button_7, SIGNAL(clicked()), this, SLOT(button_7_clicked()));
 	connect(button_8, SIGNAL(clicked()), this, SLOT(button_8_clicked()));
 	connect(button_9, SIGNAL(clicked()), this, SLOT(button_9_clicked()));
+	connect(button_point, SIGNAL(clicked()), this, SLOT(button_point_clicked()));
 	connect(button_plus, SIGNAL(clicked()), this, SLOT(button_plus_clicked()));
 	connect(button_minus, SIGNAL(clicked()), this, SLOT(button_minus_clicked()));
 	connect(button_times, SIGNAL(clicked()), this, SLOT(button_times_clicked()));
@@ -83,7 +86,6 @@ Calculator::Calculator(QWidget *parent)
 	connect(button_ce, SIGNAL(clicked()), this, SLOT(button_ce_clicked()));
 	connect(button__, SIGNAL(clicked()), this, SLOT(button__clicked()));
 	setLayout(v1);
-	//ui.setupUi(this);
 }
 void Calculator::button_0_clicked() {
 	S += "0";
@@ -125,33 +127,45 @@ void Calculator::button_9_clicked() {
 	S += "9";
 	lineEditor->setText(S);
 }
+void Calculator::button_point_clicked(){
+	if (!point_pressed)
+	{
+		S += ".";
+		lineEditor->setText(S);
+		point_pressed = true;
+	}
+}
 void Calculator::button_plus_clicked() {
-	num1 = lineEditor->text().toInt();
+	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '+';
 	mark = 2;
 	S = "";
+	point_pressed = false;
 }
 void Calculator::button_minus_clicked() {
-	num1 = lineEditor->text().toInt();
+	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '-';
 	mark = 2;
 	S = "";
+	point_pressed = false;
 }
 void Calculator::button_times_clicked() {
-	num1 = lineEditor->text().toInt();
+	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '*';
 	mark = 2;
 	S = "";
+	point_pressed = false;
 }
 void Calculator::button_divide_clicked() {
-	num1 = lineEditor->text().toInt();
+	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '/';
 	mark = 2;
 	S = "";
+	point_pressed = false;
 }
 void Calculator::button__clicked() {
 	S += "-";
@@ -159,7 +173,7 @@ void Calculator::button__clicked() {
 	positive_negative = false;
 }
 void Calculator::button_result_clicked() {
-	num2 = lineEditor->text().toInt();
+	num2 = lineEditor->text().toDouble();
 	S = "";
 	switch (operate)
 	{
@@ -182,7 +196,7 @@ void Calculator::button_result_clicked() {
 		break;
 	}
 	char str[20];
-	sprintf(str, "%d", result);
+	sprintf(str, "%g", result);
 	lineEditor->setText(str);
 }
 void Calculator::button_ce_clicked() {
