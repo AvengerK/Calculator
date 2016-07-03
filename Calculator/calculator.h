@@ -23,6 +23,7 @@ protected:
 	QPushButton* button_7;
 	QPushButton* button_8;
 	QPushButton* button_9;
+	QPushButton* button_point;
 	QPushButton* button_ce;
 	QPushButton* button_plus;
 	QPushButton* button_minus;
@@ -30,11 +31,13 @@ protected:
 	QPushButton* button_divide;
 	QPushButton* button__;
 	QPushButton* button_result;
-	int num1, num2, result;
-	bool plus_minus;
+	double num1, num2, result;
+	bool point_mark;
+	bool positive_negative;
 	int mark;
-	char operate;
+	char _operator;
 	QString S;
+	
 public:
 	Calculator(QWidget *parent = 0);
 	~Calculator();
@@ -52,6 +55,7 @@ private:
 	void button_7_clicked();
 	void button_8_clicked();
 	void button_9_clicked();
+	void button_point_clicked();
 	void button_ce_clicked();
 	void button_plus_clicked();
 	void button_minus_clicked();
