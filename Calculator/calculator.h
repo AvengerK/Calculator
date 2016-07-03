@@ -31,14 +31,13 @@ protected:
 	QPushButton* button__;
 	QPushButton* button_result;
 	int num1, num2, result;
-	bool plus_minus;
+	bool positive_negative;
 	int mark;
 	char operate;
 	QString S;
 public:
 	Calculator(QWidget *parent = 0);
 	~Calculator();
-
 private:
 	Ui::CalculatorClass ui;
 	private slots:

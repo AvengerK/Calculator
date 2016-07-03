@@ -4,16 +4,18 @@
 #include <QLineEdit>
 #include <cmath>
 #include <QDebug>
-//#include <iostream>
+#include <string>
+#include <cstdio>
+#include <cstring>
 #include "calculator.h"
-//using namespace std;
+using namespace std;
 Calculator::Calculator(QWidget *parent)
 	: QDialog(parent)
 {
 	num1 = 0;
 	num2 = 0;
 	result = 0;
-	plus_minus = true;
+	positive_negative = true;
 	mark = 1;
 	lineEditor = new QLineEdit("0");
 	S = "";
@@ -43,7 +45,6 @@ Calculator::Calculator(QWidget *parent)
 	Hl1->addWidget(button_ce);
 	Hl2->addWidget(button_1);
 	Hl2->addWidget(button_2);
-	//
 	Hl2->addWidget(button_3);
 	Hl2->addWidget(button_plus);
 	Hl3->addWidget(button_4);
@@ -87,231 +88,67 @@ Calculator::Calculator(QWidget *parent)
 void Calculator::button_0_clicked() {
 	S += "0";
 	lineEditor->setText(S);
-	if (mark == 1)
-	{
-		num1 = num1 * 10 + 0;
-	}
-	else
-	{
-		num2 = num2 * 10;
-	}
 }
 void Calculator::button_1_clicked() {
 	S += "1";
 	lineEditor->setText(S);
-	if (1 == mark)
-	{
-		if (plus_minus)
-		{
-			num1 = num1 * 10 + 1;
-		}
-		else
-		{
-			num1 = num1 * 10 - 1;
-		}
-	}
-	else
-	{
-		if (plus_minus)
-		{
-			num2 = num2 * 10 + 1;
-		}
-		else
-		{
-			num2 = num2 * 10 - 1;
-		}
-	}
 }
 void Calculator::button_2_clicked() {
 	S += "2";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 2;
-		}
-		else {
-			num1 = num1 * 10 - 2;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 2;
-		}
-		else {
-			num2 = num2 * 10 - 2;
-		}
-	}
 }
 void Calculator::button_3_clicked() {
 	S += "3";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 3;
-		}
-		else {
-			num1 = num1 * 10 - 3;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 3;
-		}
-		else {
-			num2 = num2 * 10 - 3;
-		}
-	}
 }
 void Calculator::button_4_clicked() {
 	S += "4";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 4;
-		}
-		else {
-			num1 = num1 * 10 - 4;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 4;
-		}
-		else {
-			num2 = num2 * 10 - 4;
-		}
-	}
 }
 void Calculator::button_5_clicked() {
 	S += "5";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 5;
-		}
-		else {
-			num1 = num1 * 10 - 5;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 5;
-		}
-		else {
-			num2 = num2 * 10 - 5;
-		}
-	}
 }
 void Calculator::button_6_clicked() {
 	S += "6";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 6;
-		}
-		else {
-			num1 = num1 * 10 - 6;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 6;
-		}
-		else {
-			num2 = num2 * 10 - 6;
-		}
-	}
 }
 void Calculator::button_7_clicked() {
 	S += "7";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 7;
-		}
-		else {
-			num1 = num1 * 10 - 7;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 7;
-		}
-		else {
-			num2 = num2 * 10 - 7;
-		}
-	}
 }
 void Calculator::button_8_clicked() {
 	S += "8";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 8;
-		}
-		else {
-			num1 = num1 * 10 - 8;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 8;
-		}
-		else {
-			num2 = num2 * 10 - 8;
-		}
-	}
 }
 void Calculator::button_9_clicked() {
 	S += "9";
 	lineEditor->setText(S);
-	if (mark == 1) {
-		if (plus_minus) {
-			num1 = num1 * 10 + 9;
-		}
-		else {
-			num1 = num1 * 10 - 9;
-		}
-	}
-	else {
-		if (plus_minus) {
-			num2 = num2 * 10 + 9;
-		}
-		else {
-			num2 = num2 * 10 - 9;
-		}
-	}
 }
 void Calculator::button_plus_clicked() {
-	//S = "+";
-	//lineEditor->setText(S);
-
-	//lineEditor->setText(S);
-	plus_minus = true;
+	num1 = lineEditor->text().toInt();
+	positive_negative = true;
 	operate = '+';
 	mark = 2;
 	S = "";
 }
 void Calculator::button_minus_clicked() {
-	//S += "-";
-	//lineEditor->setText(S);
-	plus_minus = true;
+	num1 = lineEditor->text().toInt();
+	positive_negative = true;
 	operate = '-';
 	mark = 2;
 	S = "";
 }
 void Calculator::button_times_clicked() {
-	//S = "";
-	//lineEditor->setText(S);
-	plus_minus = true;
+	num1 = lineEditor->text().toInt();
+	positive_negative = true;
 	operate = '*';
 	mark = 2;
 	S = "";
 }
 void Calculator::button_divide_clicked() {
-	//S = "";
-	//lineEditor->setText(S);
-	plus_minus = true;
+	num1 = lineEditor->text().toInt();
+	positive_negative = true;
 	operate = '/';
 	mark = 2;
 	S = "";
@@ -319,9 +156,10 @@ void Calculator::button_divide_clicked() {
 void Calculator::button__clicked() {
 	S += "-";
 	lineEditor->setText(S);
-	plus_minus = false;
+	positive_negative = false;
 }
 void Calculator::button_result_clicked() {
+	num2 = lineEditor->text().toInt();
 	S = "";
 	switch (operate)
 	{
@@ -332,7 +170,7 @@ void Calculator::button_result_clicked() {
 		result = num1 - num2;
 		break;
 	case '*':
-		result = num1*num2;
+		result = num1 * num2;
 		break;
 	case '/':
 		if (num2)
@@ -343,43 +181,12 @@ void Calculator::button_result_clicked() {
 	default:
 		break;
 	}
-	int i = 0;
-	int result1 = abs(result);
-	while (result1)
-	{
-		i++;
-		result1 /= 10;
-	}
-	if (result > 0)
-	{
-		for (;i;i--)
-		{
-			S += (result / (int)pow(10, i - 1) + '0');
-			result %= (int)pow(10, i - 1);
-		}
-	}
-	else if (result == 0)
-	{
-		S = "0";
-	}
-	else
-	{
-		S += "-";
-		int result2 = abs(result);
-		for (;i;i--)
-		{
-			S += (result2 / (int)pow(10, i - 1) + '0');
-			result2 %= (int)pow(10, i - 1);
-		}
-	}
-	lineEditor->setText(S);
-	plus_minus = true;
-	num1 = num2 = 0;
-	mark = 1;
-	S = "";
+	char str[20];
+	sprintf(str, "%d", result);
+	lineEditor->setText(str);
 }
 void Calculator::button_ce_clicked() {
-	plus_minus = true;
+	positive_negative = true;
 	S = "";
 	lineEditor->setText("0");
 	num1 = num2 = 0;
