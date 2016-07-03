@@ -1,5 +1,7 @@
 #include "calculator.h"
+//#include <iostream>
 #include <QtWidgets/QApplication>
+//using namespace std;
 
 int main(int argc, char *argv[])
 {
