@@ -34,7 +34,6 @@ protected:
 	double num1, num2, result;
 	bool positive_negative;
 	bool point_pressed;
-	int mark;
 	char operate;
 	QString S;
 public:

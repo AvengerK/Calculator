@@ -16,7 +16,7 @@ Calculator::Calculator(QWidget *parent)
 	num2 = 0;
 	result = 0;
 	positive_negative = true;
-	mark = 1;
+	point_pressed = false;
 	lineEditor = new QLineEdit("0");
 	S = "";
 	button_0 = new QPushButton("0");
@@ -139,7 +139,6 @@ void Calculator::button_plus_clicked() {
 	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '+';
-	mark = 2;
 	S = "";
 	point_pressed = false;
 }
@@ -147,7 +146,6 @@ void Calculator::button_minus_clicked() {
 	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '-';
-	mark = 2;
 	S = "";
 	point_pressed = false;
 }
@@ -155,7 +153,6 @@ void Calculator::button_times_clicked() {
 	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '*';
-	mark = 2;
 	S = "";
 	point_pressed = false;
 }
@@ -163,7 +160,6 @@ void Calculator::button_divide_clicked() {
 	num1 = lineEditor->text().toDouble();
 	positive_negative = true;
 	operate = '/';
-	mark = 2;
 	S = "";
 	point_pressed = false;
 }
@@ -198,13 +194,14 @@ void Calculator::button_result_clicked() {
 	char str[20];
 	sprintf(str, "%g", result);
 	lineEditor->setText(str);
+	point_pressed = false;
 }
 void Calculator::button_ce_clicked() {
 	positive_negative = true;
 	S = "";
 	lineEditor->setText("0");
 	num1 = num2 = 0;
-	mark = 1;
+	point_pressed = false;
 }
 Calculator::~Calculator()
 {
